@@ -56,51 +56,7 @@ echo ""
 echo ""
 
 
-echo ""
-echo ""
-echo "Import Server Databases "
-echo "Enter the Mysql root password if the password exist:"
-read MYSQL_PW
-if [ ${MYSQL_PW}1 = "1" ] 
-then
-	:
-else
-	 MY_PRA="-p${MYSQL_PW}"
-fi
 
-echo ""
-echo ""
-echo "Enter your Mysql PATH: (default: /usr/bin/mysql)"
-echo "Defautl press Enter"
-read MYSQL_PATH
-if [ "${MYSQL_PATH}" = ""  ] 
-then
-	MYSQL_PATH="/usr/bin/mysql"
-fi
-################ Detect if the DATABASE goip exits already ###########
-if ${MYSQL_PATH} -u root $MY_PRA -e "show databases;" | grep scheduler > /dev/null
-then
-    echo -e "\033[31mthe SMS SERVER's DATABASE \"scheduler\" already exists.\033[0m"
-    echo -e "\033[31mAre you sure to override the DATABASE? !!! All data of this DATABASE \"scheduler\" will be erasured if you do this !!!\033[0m"
-    echo "Enter \"yes\" or \"no\":"
-    read OVERRIDE
-    case "$OVERRIDE" in
-	[Yy][Ee][Ss]) ${MYSQL_PATH} -u root $MY_PRA < smb_scheduler/scheduler.sql;;
-	[Nn][Oo])  echo "exit." && exit;;
- 	*)   echo "Please enter \"yes\" or \"no\"." && exit;;
-    esac
-else
-    ${MYSQL_PATH} -u root $MY_PRA < smb_scheduler/scheduler.sql
-fi
-###################################################################### 
-
-if [ $? = "0" ]
-then
-	:
-else
-	echo "Mysql Database error"	
-	exit 1
-fi
 
 
 echo '
