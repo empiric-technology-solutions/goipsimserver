@@ -1,5 +1,5 @@
 <?php 
-$dbhost='localhost';	//database server 
+$dbhost='mmimysqlrds.cluster-cqmvee21mqyo.us-east-2.rds.amazonaws.com';	//database server
 $dbuser='scheduler';		//database username 
 $dbpw='scheduler';		//database password 
 $dbname='scheduler';		//database name
