@@ -1,6 +1,6 @@
 -- MySQL dump 10.11
 --
--- Host: localhost    Database: scheduler
+-- Host: RDS    Database: scheduler
 -- ------------------------------------------------------
 -- Server version	5.0.77
 
@@ -15,9 +15,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-GRANT all ON scheduler.* TO scheduler@localhost IDENTIFIED BY 'scheduler';
 DROP database IF EXISTS `scheduler`;
 create database scheduler;
+--
+-- TODO : replace with pass from env
+--
+GRANT all ON scheduler.* TO scheduler@localhost IDENTIFIED BY 'scheduler';
 use scheduler;
 
 --
